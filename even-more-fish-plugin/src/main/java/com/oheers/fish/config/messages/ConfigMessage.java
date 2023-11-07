@@ -50,6 +50,9 @@ public enum ConfigMessage {
     FISH_CANT_BE_PLACED("&rYou cannot place this fish.", PrefixType.ERROR, true, true, "place-fish-blocked"),
     FISH_CAUGHT("&r&l{player} &rhas fished a {rarity_colour}{length}cm &l{rarity} {rarity_colour}{fish}!", PrefixType.NONE, true, false, "fish-caught"),
     FISH_LENGTHLESS_CAUGHT("&r&l{player} &rhas fished a {rarity_colour}&l{rarity} {rarity_colour}{fish}!", PrefixType.NONE, true, false, "lengthless-fish-caught"),
+    FISH_CAUGHT_TOPLAYER("&rYou have fished a {rarity_colour}{length}cm &l{rarity} {rarity_colour}{fish}!", PrefixType.NONE, true, false, "fish-caught-toplayer"),
+    FISH_LENGTHLESS_CAUGHT_TOPLAYER("&rYou have fished a {rarity_colour}&l{rarity} {rarity_colour}{fish}!", PrefixType.NONE, true, false, "lengthless-fish-caught-toplayer"),
+    
     FISH_LORE(Arrays.asList(
             "{fisherman_lore}",
             "{length_lore}",

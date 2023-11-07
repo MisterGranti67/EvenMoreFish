@@ -203,40 +203,45 @@ public class FishingProcessor implements Listener {
         if (cEvent.isCancelled()) return null;
 
         if (sendMessages && !fish.isSilent()) {
-            if (EvenMoreFish.mainConfig.isBroadcastFishingEnabled()) {
-                // puts all the fish information into a format that Messages.renderMessage() can print out nicely
+            // puts all the fish information into a format that Messages.renderMessage() can print out nicely
 
-                String length = Float.toString(fish.getLength());
-                // Translating the colours because some servers store colour in their fish name
-                String name = FishUtils.translateHexColorCodes(fish.getName());
-                String rarity = FishUtils.translateHexColorCodes(fish.getRarity().getValue());
+            String length = Float.toString(fish.getLength());
+            // Translating the colours because some servers store colour in their fish name
+            String name = FishUtils.translateHexColorCodes(fish.getName());
+            String rarity = FishUtils.translateHexColorCodes(fish.getRarity().getValue());
+            Message message = new Message(ConfigMessage.FISH_CAUGHT);
 
-                Message message = new Message(ConfigMessage.FISH_CAUGHT);
-                message.setPlayer(player.getName());
-                message.setRarityColour(fish.getRarity().getColour());
-                message.setRarity(rarity);
-                message.setLength(length);
+            if (!fish.getRarity().getAnnounce()) {
+                message.setMessage(ConfigMessage.FISH_CAUGHT_TOPLAYER);
+            }
+            message.setPlayer(player.getName());
+            message.setRarityColour(fish.getRarity().getColour());
+            message.setRarity(rarity);
+            message.setLength(length);
 
-                EvenMoreFish.metric_fishCaught++;
+            EvenMoreFish.metric_fishCaught++;
 
-                if (fish.getDisplayName() != null) message.setFishCaught(fish.getDisplayName());
-                else message.setFishCaught(name);
+            if (fish.getDisplayName() != null) message.setFishCaught(fish.getDisplayName());
+            else message.setFishCaught(name);
 
-                if (fish.getRarity().getDisplayName() != null) message.setRarity(fish.getRarity().getDisplayName());
-                else message.setRarity(rarity);
+            if (fish.getRarity().getDisplayName() != null) message.setRarity(fish.getRarity().getDisplayName());
+            else message.setRarity(rarity);
 
-                if (fish.getLength() == -1) {
+            if (fish.getLength() == -1) {
+                if (!fish.getRarity().getAnnounce()) {
+                    message.setMessage(ConfigMessage.FISH_LENGTHLESS_CAUGHT_TOPLAYER);
+                } else {
                     message.setMessage(ConfigMessage.FISH_LENGTHLESS_CAUGHT);
                 }
+            }
 
-                // Gets whether it's a serverwide announce or not
-                if (fish.getRarity().getAnnounce()) {
-                    // should we only broadcast this information to rod holders?
-                    FishUtils.broadcastFishMessage(message, false);
-                } else {
-                    // sends it to just the fisher
-                    message.broadcast(player, true, true);
-                }
+            // Gets whether it's a serverwide announce or not
+            if (fish.getRarity().getAnnounce()) {
+                // should we only broadcast this information to rod holders?
+                FishUtils.broadcastFishMessage(message, false);
+            } else {
+                // sends it to just the fisher
+                message.broadcast(player, true, true);
             }
         }
 

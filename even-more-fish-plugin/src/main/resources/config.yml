@@ -4,7 +4,7 @@ enabled: true
 # The locale of the message file
 # Currently: en, cs, de, es, fr, ja, ko, nl, pl, pt-br, ru, tr, vn, zh_cn
 # Delete messages.yml before changing this
-locale: en
+locale: fr
 
 # Should EMF fish only be given during a competition?
 fish-only-in-competition: false
@@ -120,9 +120,6 @@ place-head-fish: false
 
 # Switch between custom fish or vanilla fishing
 vanilla-fishing: true
-
-# Enable or Disable Announcement to All Players
-broadcast-fishing: true
 
 # ATTENTION ATTENTION ATTENTION
 # DO NOT EDIT THIS VALUE UNLESS YOU'RE UPDATING THE CONFIG.

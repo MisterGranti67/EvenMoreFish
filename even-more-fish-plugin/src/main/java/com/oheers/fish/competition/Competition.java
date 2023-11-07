@@ -453,9 +453,7 @@ public class Competition {
                 message.setAmount(Integer.toString(leaderboard.getSize()));
                 message.broadcast(player, true, true);
             } else {
-                if (EvenMoreFish.mainConfig.isBroadcastFishingEnabled()) {
-                    new Message(ConfigMessage.NO_FISH_CAUGHT).broadcast(player, true, false);
-                }
+                new Message(ConfigMessage.NO_FISH_CAUGHT).broadcast(player, true, false);
             }
         } else {
             new Message(ConfigMessage.NO_COMPETITION_RUNNING).broadcast(player, true, true);
@@ -524,9 +522,7 @@ public class Competition {
                 message.setAmount(Integer.toString(leaderboard.getSize()));
                 message.broadcast(console, true, true);
             } else {
-                if (EvenMoreFish.mainConfig.isBroadcastFishingEnabled()) {
-                    new Message(ConfigMessage.NO_FISH_CAUGHT).broadcast(console, true, false);
-                }
+                new Message(ConfigMessage.NO_FISH_CAUGHT).broadcast(console, true, false);
             }
         } else {
             new Message(ConfigMessage.NO_COMPETITION_RUNNING).broadcast(console, true, true);

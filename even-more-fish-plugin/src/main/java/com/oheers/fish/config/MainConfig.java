@@ -77,10 +77,6 @@ public class MainConfig {
         return config.getBoolean("vanilla-fishing", true);
     }
 
-    public boolean isBroadcastFishingEnabled() {
-        return config.getBoolean("broadcast-fishing", true);
-    }
-
     public String getSellType() {return config.getString("sell-type", "money");}
 
     public String getFiller() {
